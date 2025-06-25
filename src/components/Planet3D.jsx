@@ -10,14 +10,14 @@ import { useEffect, useRef } from "react";
 function Earth({ isShutdown }) {
   const meshRef = useRef();
 
-  const earthVideoTexture = useVideoTexture("src/assets/earth_daylight.mp4", {
+  const earthVideoTexture = useVideoTexture("/earth_daylight.mp4", {
     loop: true,
     muted: true,
     start: true,
     crossOrigin: "Anonymous",
   });
 
-  const earthNightTexture = useTexture("src/assets/earth_night.jpg");
+  const earthNightTexture = useTexture("/earth_night.jpg");
 
   // Rotation speed variable - delta * 0.1 controls the rotation speed
   useFrame((state, delta) => {
