@@ -6,6 +6,16 @@
   box-sizing: border-box;
 }
 
+:root {
+  --hue: 223;
+  --hue2: 133;
+  --bg: black;
+  --fg: white;
+  --primary: hsl(var(--hue), 90%, 50%);
+  --trans-dur: 0.3s;
+  --trans-timing: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
@@ -179,35 +189,199 @@ body {
   gap: 1rem;
 }
 
-.red-button {
-  background: red;
-  color: white;
-  border: none;
-  padding: 1.5rem 3rem;
-  font-size: 1.5rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Styles pour l'interrupteur */
+.switch,
+.switch__input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.switch {
+  background-color: #222;
+  border-radius: 0.375em;
+  box-shadow: 0 4.375em 2em #111 inset, 0 0.125em 0 #222 inset,
+    0 0 0.375em rgba(0, 0, 0, 0.5);
+  margin: auto;
   position: relative;
-  overflow: hidden;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    box-shadow var(--trans-dur) var(--trans-timing);
+  width: 3.75em;
+  height: 8.75em;
 }
 
-.red-button:hover:not(:disabled) {
-  background: #cc0000;
-}
-
-.red-button:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.red-button.shake {
+.switch.shake {
   animation: buttonShake 0.5s ease-in-out;
 }
 
-.red-button.shutdown {
-  background: #333;
-  cursor: not-allowed;
+.switch__input,
+.switch__lever,
+.switch__lever-half-top,
+.switch__lever-half-bottom,
+.switch__lever-shadow,
+.switch__lever-shadow:before,
+.switch__lever-shadow:after {
+  display: block;
+}
+
+.switch__input,
+.switch__label,
+.switch__lever-half-top,
+.switch__lever-half-bottom,
+.switch__lever-shadow,
+.switch__lever-shadow:before,
+.switch__lever-shadow:after {
+  position: absolute;
+}
+
+.switch__input {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.switch__label {
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}
+
+.switch__lever,
+.switch__lever-shadow {
+  pointer-events: none;
+}
+
+.switch__lever {
+  background-color: #333;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em #000 inset, 0.75em 0 0.5em #222 inset;
+  margin: 0.375em;
+  position: relative;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    box-shadow var(--trans-dur) var(--trans-timing);
+  width: calc(100% - 0.75em);
+  height: calc(100% - 0.75em);
+}
+
+.switch__lever:before {
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  border-radius: inherit;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.switch__lever-half-top,
+.switch__lever-half-bottom {
+  display: flex;
+  justify-content: center;
+  left: 0.125em;
+  padding: 0.5em;
+  width: calc(100% - 0.25em);
+  height: calc(50% - 0.125em);
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    transform var(--trans-dur) var(--trans-timing);
+}
+
+.switch__lever-half-top {
+  background-color: #444;
+  border-radius: 0.25em 0.25em 0 0;
+  bottom: 50%;
+  transform-origin: 50% 100%;
+}
+
+.switch__lever-half-top:before,
+.switch__lever-half-bottom:before {
+  content: "";
+  display: block;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    box-shadow var(--trans-dur) var(--trans-timing);
+}
+
+.switch__lever-half-top:before {
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.125em #333 inset, 0 0.25em 0 #444 inset, 0 0.125em 0 #444;
+  width: 1em;
+  height: 1em;
+}
+
+.switch__lever-half-bottom {
+  background-color: #444;
+  border-radius: 0 0 0.25em 0.25em;
+  align-items: flex-end;
+  top: 50%;
+  transform: rotateX(-35deg);
+  transform-origin: 50% 0;
+}
+
+.switch__lever-half-bottom:before {
+  background-color: #333;
+  box-shadow: 0 0.125em 0 #222 inset, 0 -0.0625em 0 #444 inset,
+    0 0 0.5em rgba(0, 255, 0, 0);
+  width: 0.25em;
+  height: 1.125em;
+}
+
+.switch__lever-shadow {
+  border-radius: 0.25em;
+  overflow: hidden;
+  top: 0.5em;
+  right: 0;
+  width: 5em;
+  height: calc(100% - 0.25em);
+}
+
+.switch__lever-shadow:before,
+.switch__lever-shadow:after {
+  background-color: rgba(0, 0, 0, 0.3);
+  content: "";
+  left: 1.625em;
+  width: 3em;
+  height: 50%;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    transform var(--trans-dur) var(--trans-timing);
+}
+
+.switch__lever-shadow:before {
+  border-radius: 1.5em 0 0 0 / 1em 0 0 0;
+  transform-origin: 0 100%;
+}
+
+.switch__lever-shadow:after {
+  border-radius: 0.25em;
+  bottom: 0;
+  transform: skewX(-10deg);
+  transform-origin: 0 0;
+}
+
+/* État `:checked` */
+.switch__input:checked ~ .switch__lever .switch__lever-half-top {
+  background-color: #333;
+  transform: rotateX(35deg);
+}
+
+.switch__input:checked ~ .switch__lever .switch__lever-half-top:before {
+  box-shadow: 0 0 0 0.125em #222 inset, 0 0.25em 0 #333 inset, 0 0.125em 0 #333;
+}
+
+.switch__input:checked ~ .switch__lever .switch__lever-half-bottom {
+  background-color: #333;
+  transform: rotateX(0);
+}
+
+.switch__input:checked ~ .switch__lever .switch__lever-half-bottom:before {
+  background-color: #00ff00;
+  box-shadow: 0 0.125em 0 #00cc00 inset, 0 -0.0625em 0 #444 inset,
+    0 0 0.5em rgba(0, 255, 0, 1);
+}
+
+.switch__input:checked ~ .switch__lever-shadow:before {
+  transform: rotate(-10deg);
+}
+
+.switch__input:checked ~ .switch__lever-shadow:after {
+  transform: skewX(0) scaleY(0.85);
 }
 
 .button-status {
@@ -666,11 +840,6 @@ body {
 
   .circular-stat-item .stat-value {
     font-size: 0.8rem;
-  }
-
-  .red-button {
-    padding: 1.25rem 2.5rem;
-    font-size: 1.3rem;
   }
 
   .stats-grid {

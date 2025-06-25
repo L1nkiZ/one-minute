@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import InfoPopup from "./components/InfoPopup";
 import Planet3D from "./components/Planet3D";
-import RedButton from "./components/RedButton";
+import PowerSwitch from "./components/RedButton";
 import ShareButton from "./components/ShareButton";
 import StatsDisplay from "./components/StatsDisplay";
 
@@ -81,7 +81,7 @@ function App() {
         </div>
 
         <div className="interaction-section">
-          <RedButton onClick={handleShutdownPlanet} isShutdown={isShutdown} />
+          <PowerSwitch onClick={handleShutdownPlanet} isShutdown={isShutdown} />
         </div>
 
         {isShutdown && (
