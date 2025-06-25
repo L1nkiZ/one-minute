@@ -19,13 +19,19 @@ function formatNumber(value, decimals = 0) {
   return value.toFixed(decimals);
 }
 
-function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
+function StatItem({ stat, elapsedSeconds, index, onStatClick, circular, compact = false }) {
   const [displayValue, setDisplayValue] = useState(0);
-  const [isIncrementing, setIsIncrementing] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const currentValue = stat.ratePerSecond * elapsedSeconds;
 
   useEffect(() => {
+    // Si c'est pour le rapport final (compact), pas d'animation progressive
+    if (compact) {
+      setDisplayValue(currentValue);
+      return;
+    }
+
     const interval = setInterval(() => {
       setDisplayValue((prev) => {
         const target = currentValue;
@@ -33,9 +39,10 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
         const increment = diff * 0.1;
 
         if (Math.abs(increment) > 0.01) {
-          if (!isIncrementing) {
-            setIsIncrementing(true);
-            setTimeout(() => setIsIncrementing(false), 200);
+          // Déclencher l'animation seulement si pas compact
+          if (!isAnimating && !compact) {
+            setIsAnimating(true);
+            setTimeout(() => setIsAnimating(false), 300);
           }
           return prev + increment;
         }
@@ -45,19 +52,19 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
     }, 33);
 
     return () => clearInterval(interval);
-  }, [currentValue, isIncrementing]);
+  }, [currentValue, isAnimating, compact]);
 
   if (circular) {
     return (
       <div
-        className={`circular-stat-item ${isIncrementing ? "incrementing" : ""}`}
+        className={`circular-stat-item ${isAnimating && !compact ? 'animating' : ''}`}
         onClick={() => onStatClick && onStatClick(stat)}
       >
         <div className="stat-icon-container">
           <div className="stat-icon">{stat.icon}</div>
           <div className="stat-underline"></div>
         </div>
-        <div className="stat-value">
+        <div className={`stat-value ${isAnimating && !compact ? 'value-animating' : ''}`}>
           {formatNumber(displayValue, stat.ratePerSecond < 1 ? 6 : 0)}{" "}
           {stat.unit}
         </div>
@@ -67,7 +74,7 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
 
   return (
     <div
-      className={`stat-item ${isIncrementing ? "incrementing" : ""}`}
+      className={`stat-item ${isAnimating && !compact ? 'animating' : ''}`}
       style={{
         animationDelay: `${index * 0.1}s`,
         opacity: 1,
@@ -80,7 +87,7 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
         <div className="stat-underline"></div>
       </div>
       <div className="stat-content">
-        <div className="stat-value">
+        <div className={`stat-value ${isAnimating && !compact ? 'value-animating' : ''}`}>
           {formatNumber(displayValue, stat.ratePerSecond < 1 ? 6 : 0)}{" "}
           {stat.unit}
         </div>
@@ -91,7 +98,7 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
   );
 }
 
-function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular }) {
+function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular, compact = false }) {
   if (!isShutdown) return null;
 
   if (circular) {
@@ -116,6 +123,7 @@ function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular }) {
                 index={index}
                 onStatClick={onStatClick}
                 circular={true}
+                compact={compact}
               />
             </div>
           );
@@ -125,17 +133,19 @@ function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular }) {
   }
 
   return (
-    <div className="stats-display">
-      <div className="stats-header">
-        <h2>🌱 Ressources économisées depuis l'extinction</h2>
-        <div className="timer">
-          {Math.floor(elapsedSeconds / 3600)}h{" "}
-          {Math.floor((elapsedSeconds % 3600) / 60)}m{" "}
-          {Math.floor(elapsedSeconds % 60)}s
+    <div className={`stats-display ${compact ? 'stats-display-compact' : ''}`}>
+      {!compact && (
+        <div className="stats-header">
+          <h2>🌱 Ressources économisées depuis l'extinction</h2>
+          <div className="timer">
+            {Math.floor(elapsedSeconds / 3600)}h{" "}
+            {Math.floor((elapsedSeconds % 3600) / 60)}m{" "}
+            {Math.floor(elapsedSeconds % 60)}s
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="stats-grid">
+      <div className={`stats-grid ${compact ? 'stats-grid-compact' : ''}`}>
         {statsConfig.stats.map((stat, index) => (
           <StatItem
             key={stat.id}
@@ -143,13 +153,16 @@ function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular }) {
             elapsedSeconds={elapsedSeconds}
             index={index}
             onStatClick={onStatClick}
+            compact={compact}
           />
         ))}
       </div>
 
-      <div className="stats-footer">
-        <p>Ces données sont basées sur des estimations mondiales moyennes</p>
-      </div>
+      {!compact && (
+        <div className="stats-footer">
+          <p>Ces données sont basées sur des estimations mondiales moyennes</p>
+        </div>
+      )}
     </div>
   );
 }

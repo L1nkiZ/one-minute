@@ -142,8 +142,8 @@ body {
   border-radius: 12px;
   padding: 16px;
   transition: none;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
   animation: fadeIn 0.5s ease-out;
   animation-delay: calc(var(--index) * 0.1s);
@@ -155,11 +155,26 @@ body {
   overflow: hidden;
 }
 
-.circular-stat-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: scale(1.05);
-  z-index: 30;
+/* Suppression complète du hover pour les cartes circulaires */
+/* .circular-stat-item:hover - cette règle est supprimée */
+
+.stat-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 12px;
+  padding: 20px;
+  transition: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Suppression complète du hover pour les cartes normales */
+/* .stat-item:hover - cette règle est supprimée */
 
 .stat-icon-container {
   display: flex;
@@ -206,7 +221,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: -100px;
+  margin-top: 50px;
 }
 
 .button-container {
@@ -226,7 +241,7 @@ body {
   z-index: 1000;
   background-color: hsl(var(--hue), 10%, 90%);
   transform: rotate(90deg);
-  margin-top: -230px;
+  margin-top: -50px;
   border-radius: 0.375em;
   box-shadow: 0 4.375em 2em hsl(var(--hue), 10%, 70%) inset,
     0 0.125em 0 hsl(var(--hue), 10%, 90%) inset,
@@ -444,14 +459,12 @@ body {
   overflow: hidden;
 }
 
-.stat-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
+/* Suppression complète du hover pour les cartes normales */
+/* .stat-item:hover - cette règle est supprimée */
 
-.stat-item.incrementing {
+/* .stat-item.incrementing {
   animation: increment 0.2s ease;
-}
+} */
 
 .stat-icon {
   font-size: 2rem;
@@ -819,34 +832,38 @@ body {
   }
 
   .planet-container-wrapper {
-    height: 600px;
+    height: 100vh;
+    width: 100vw;
   }
 
   .planet-section {
-    width: 300px;
-    height: 300px;
+    width: 50vmin;
+    height: 50vmin;
+    min-width: 280px;
+    min-height: 280px;
   }
 
   .circular-stat-position {
-    transform: rotate(calc(var(--angle))) translate(220px)
+    transform: rotate(calc(var(--angle))) translate(calc(25vmin + 60px))
       rotate(calc(-1 * var(--angle)));
   }
 
   .circular-stat-item {
-    width: 80px;
-    height: 80px;
-    padding: 8px;
+    width: 70px;
+    height: 70px;
+    padding: 6px;
   }
 
   .circular-stat-item .stat-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 1.2rem;
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
   }
 
   .circular-stat-item .stat-value {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     line-height: 1;
+    margin-top: 4px;
   }
 
   .stats-grid {
@@ -876,6 +893,18 @@ body {
     padding: 1.5rem;
     width: 95%;
   }
+
+  .interaction-section {
+    margin-top: 30px;
+  }
+
+  .switch {
+    margin-top: -30px;
+  }
+
+  .restart-button {
+    margin-top: 15px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -884,22 +913,25 @@ body {
   }
 
   .planet-container-wrapper {
-    height: 400px;
+    height: 100vh;
+    width: 100vw;
   }
 
   .planet-section {
-    width: 200px;
-    height: 200px;
+    width: 45vmin;
+    height: 45vmin;
+    min-width: 220px;
+    min-height: 220px;
   }
 
   .circular-stat-position {
-    transform: rotate(calc(var(--angle))) translate(150px)
+    transform: rotate(calc(var(--angle))) translate(calc(22.5vmin + 45px))
       rotate(calc(-1 * var(--angle)));
   }
 
   .circular-stat-item {
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     padding: 4px;
   }
 
@@ -910,8 +942,9 @@ body {
   }
 
   .circular-stat-item .stat-value {
-    font-size: 0.6rem;
-    line-height: 1;
+    font-size: 0.5rem;
+    line-height: 0.9;
+    margin-top: 2px;
   }
 
   .stats-display {
@@ -926,6 +959,80 @@ body {
   .share-options {
     grid-template-columns: 1fr;
   }
+
+  .interaction-section {
+    margin-top: 20px;
+  }
+
+  .switch {
+    margin-top: -20px;
+    width: 3em;
+    height: 7em;
+  }
+
+  .restart-button {
+    margin-top: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .timer-container {
+    top: 2vh;
+    right: 2vw;
+  }
+
+  .app-header {
+    top: 2vh;
+  }
+
+  .interaction-section {
+    bottom: 2vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .planet-section {
+    width: 40vmin;
+    height: 40vmin;
+    min-width: 180px;
+    min-height: 180px;
+  }
+
+  .circular-stat-position {
+    transform: rotate(calc(var(--angle))) translate(calc(20vmin + 35px))
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .circular-stat-item {
+    width: 45px;
+    height: 45px;
+    padding: 3px;
+  }
+
+  .circular-stat-item .stat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 0.7rem;
+  }
+
+  .circular-stat-item .stat-value {
+    font-size: 0.45rem;
+    line-height: 0.8;
+    margin-top: 1px;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timer {
+    font-size: 1rem;
+    padding: 0.6rem;
+  }
 }
 
 /* Suppression du hover pour les cartes circulaires */
@@ -936,8 +1043,8 @@ body {
   border-radius: 12px;
   padding: 16px;
   transition: none;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
   animation: fadeIn 0.5s ease-out;
   animation-delay: calc(var(--index) * 0.1s);
@@ -972,6 +1079,7 @@ body {
   cursor: pointer;
   text-transform: uppercase;
   transition: all 0.3s ease;
+  margin-top: 20px;
 }
 
 .restart-button:hover {
@@ -1134,44 +1242,210 @@ body {
 }
 
 @media (max-width: 768px) {
-  .final-report-content {
-    padding: 2rem;
-    width: 98%;
+  .app-main {
+    gap: 2rem;
   }
 
-  .final-report-header h2 {
-    font-size: 1.8rem;
+  .planet-container-wrapper {
+    height: 100vh;
+    width: 100vw;
   }
 
-  .final-report-subtitle {
+  .planet-section {
+    width: 50vmin;
+    height: 50vmin;
+    min-width: 280px;
+    min-height: 280px;
+  }
+
+  .circular-stat-position {
+    transform: rotate(calc(var(--angle))) translate(calc(25vmin + 60px))
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .circular-stat-item {
+    width: 70px;
+    height: 70px;
+    padding: 6px;
+  }
+
+  .circular-stat-item .stat-icon {
+    width: 25px;
+    height: 25px;
     font-size: 1rem;
   }
 
-  .final-report-actions {
-    flex-direction: column;
+  .circular-stat-item .stat-value {
+    font-size: 0.6rem;
+    line-height: 1;
+    margin-top: 4px;
   }
 
-  .final-report-button {
-    width: 100%;
-    min-width: auto;
-  }
-
-  .stats-grid-compact {
+  .stats-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    padding: 1.25rem;
+  }
+
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .share-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .popup-content {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .interaction-section {
+    margin-top: 30px;
+  }
+
+  .switch {
+    margin-top: -30px;
+  }
+
+  .restart-button {
+    margin-top: 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .final-report-content {
+  .app-header {
+    padding: 1.5rem 1rem;
+  }
+
+  .planet-container-wrapper {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .planet-section {
+    width: 45vmin;
+    height: 45vmin;
+    min-width: 220px;
+    min-height: 220px;
+  }
+
+  .circular-stat-position {
+    transform: rotate(calc(var(--angle))) translate(calc(22.5vmin + 45px))
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .circular-stat-item {
+    width: 55px;
+    height: 55px;
+    padding: 4px;
+  }
+
+  .circular-stat-item .stat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.8rem;
+  }
+
+  .circular-stat-item .stat-value {
+    font-size: 0.5rem;
+    line-height: 0.9;
+    margin-top: 2px;
+  }
+
+  .stats-display {
     padding: 1.5rem;
   }
 
-  .final-report-header {
-    margin-bottom: 2rem;
+  .timer {
+    font-size: 1.25rem;
+    padding: 0.75rem;
   }
 
-  .final-report-message {
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+  .share-options {
+    grid-template-columns: 1fr;
+  }
+
+  .interaction-section {
+    margin-top: 20px;
+  }
+
+  .switch {
+    margin-top: -20px;
+    width: 3em;
+    height: 7em;
+  }
+
+  .restart-button {
+    margin-top: 10px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .timer-container {
+    top: 2vh;
+    right: 2vw;
+  }
+
+  .app-header {
+    top: 2vh;
+  }
+
+  .interaction-section {
+    bottom: 2vh;
+  }
+}
+
+@media (max-width: 360px) {
+  .planet-section {
+    width: 40vmin;
+    height: 40vmin;
+    min-width: 180px;
+    min-height: 180px;
+  }
+
+  .circular-stat-position {
+    transform: rotate(calc(var(--angle))) translate(calc(20vmin + 35px))
+      rotate(calc(-1 * var(--angle)));
+  }
+
+  .circular-stat-item {
+    width: 45px;
+    height: 45px;
+    padding: 3px;
+  }
+
+  .circular-stat-item .stat-icon {
+    width: 16px;
+    height: 16px;
+    font-size: 0.7rem;
+  }
+
+  .circular-stat-item .stat-value {
+    font-size: 0.45rem;
+    line-height: 0.8;
+    margin-top: 1px;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .timer {
+    font-size: 1rem;
+    padding: 0.6rem;
   }
 }
