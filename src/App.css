@@ -895,11 +895,15 @@ body {
   }
 
   .interaction-section {
-    margin-top: 30px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
 
   .switch {
-    margin-top: -30px;
+    margin-top: 0;
   }
 
   .restart-button {
@@ -961,11 +965,15 @@ body {
   }
 
   .interaction-section {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
 
   .switch {
-    margin-top: -20px;
+    margin-top: 0;
     width: 3em;
     height: 7em;
   }
@@ -987,10 +995,6 @@ body {
 
   .app-header {
     top: 2vh;
-  }
-
-  .interaction-section {
-    bottom: 2vh;
   }
 }
 
@@ -1032,6 +1036,18 @@ body {
   .timer {
     font-size: 1rem;
     padding: 0.6rem;
+  }
+
+  .interaction-section {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  .switch {
+    margin-top: 0;
   }
 }
 
@@ -1310,11 +1326,15 @@ body {
   }
 
   .interaction-section {
-    margin-top: 30px;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
 
   .switch {
-    margin-top: -30px;
+    margin-top: 0;
   }
 
   .restart-button {
@@ -1376,11 +1396,15 @@ body {
   }
 
   .interaction-section {
-    margin-top: 20px;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
   }
 
   .switch {
-    margin-top: -20px;
+    margin-top: 0;
     width: 3em;
     height: 7em;
   }
@@ -1402,10 +1426,6 @@ body {
 
   .app-header {
     top: 2vh;
-  }
-
-  .interaction-section {
-    bottom: 2vh;
   }
 }
 
@@ -1447,5 +1467,17 @@ body {
   .timer {
     font-size: 1rem;
     padding: 0.6rem;
+  }
+
+  .interaction-section {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  .switch {
+    margin-top: 0;
   }
 }
