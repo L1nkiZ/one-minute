@@ -6,7 +6,7 @@ function PowerSwitch({ onClick, isShutdown }) {
   const handleChange = () => {
     if (!isShutdown) {
       setIsShaking(true);
-      setTimeout(() => setIsShaking(false), 500);
+      setTimeout(() => setIsShaking(false), 300);
       onClick();
     }
   };
@@ -15,7 +15,7 @@ function PowerSwitch({ onClick, isShutdown }) {
   useEffect(() => {
     const checkbox = document.querySelector(".switch__input");
     if (checkbox) {
-      checkbox.checked = isShutdown;
+      checkbox.checked = !isShutdown;
     }
   }, [isShutdown]);
 
@@ -27,7 +27,7 @@ function PowerSwitch({ onClick, isShutdown }) {
           type="checkbox"
           role="switch"
           name="power"
-          checked={isShutdown}
+          checked={!isShutdown}
           onChange={handleChange}
           disabled={isShutdown}
         />
@@ -39,12 +39,6 @@ function PowerSwitch({ onClick, isShutdown }) {
         </span>
         <span className="switch__label">Power</span>
       </label>
-      {isShutdown && (
-        <div className="button-status">
-          <span className="status-indicator">●</span>
-          <span>Mode économie activé</span>
-        </div>
-      )}
     </div>
   );
 }

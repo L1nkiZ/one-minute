@@ -3,7 +3,7 @@
     {
       "id": "co2_emissions",
       "name": "Émissions de CO₂",
-      "unit": "kg/s",
+      "unit": "kg",
       "description": "Émissions évitées",
       "ratePerSecond": 1237,
       "icon": "🌫️"
@@ -11,7 +11,7 @@
     {
       "id": "water_consumption",
       "name": "Eau potable",
-      "unit": "L/s",
+      "unit": "L",
       "description": "Eau économisée",
       "ratePerSecond": 28500,
       "icon": "💧"
@@ -19,7 +19,7 @@
     {
       "id": "energy_consumption",
       "name": "Énergie",
-      "unit": "kWh/s",
+      "unit": "kWh",
       "description": "Électricité économisée",
       "ratePerSecond": 10000,
       "icon": "⚡"
@@ -27,7 +27,7 @@
     {
       "id": "solid_waste",
       "name": "Déchets solides",
-      "unit": "kg/s",
+      "unit": "kg",
       "description": "Déchets évités",
       "ratePerSecond": 350,
       "icon": "🗑️"
@@ -35,7 +35,7 @@
     {
       "id": "deforestation",
       "name": "Arbres abattus",
-      "unit": "arbres/s",
+      "unit": "arbres",
       "description": "Déforestation stoppée",
       "ratePerSecond": 0.2,
       "icon": "🌳"
@@ -43,7 +43,7 @@
     {
       "id": "emails_sent",
       "name": "Emails envoyés",
-      "unit": "emails/s",
+      "unit": "emails",
       "description": "Pollution numérique évitée",
       "ratePerSecond": 3000,
       "icon": "📧"
@@ -51,7 +51,7 @@
     {
       "id": "video_streaming",
       "name": "Vidéos streamées",
-      "unit": "h/s",
+      "unit": "h",
       "description": "Streaming évité",
       "ratePerSecond": 400,
       "icon": "📺"
@@ -59,7 +59,7 @@
     {
       "id": "plastic_production",
       "name": "Plastique produit",
-      "unit": "kg/s",
+      "unit": "kg",
       "description": "Plastique non produit",
       "ratePerSecond": 8,
       "icon": "♻️"
@@ -67,7 +67,7 @@
     {
       "id": "methane_emissions",
       "name": "Méthane émis",
-      "unit": "kg CH₄/s",
+      "unit": "kg CH₄",
       "description": "Méthane évité",
       "ratePerSecond": 20,
       "icon": "🐄"
@@ -75,7 +75,7 @@
     {
       "id": "food_waste",
       "name": "Gaspillage alimentaire",
-      "unit": "kg/s",
+      "unit": "kg",
       "description": "Nourriture sauvée",
       "ratePerSecond": 110,
       "icon": "🍎"
@@ -83,7 +83,7 @@
     {
       "id": "oil_consumption",
       "name": "Pétrole consommé",
-      "unit": "barils/s",
+      "unit": "barils",
       "description": "Énergie fossile économisée",
       "ratePerSecond": 4,
       "icon": "🛢️"
@@ -91,7 +91,7 @@
     {
       "id": "biodiversity_loss",
       "name": "Biodiversité disparue",
-      "unit": "espèces/s",
+      "unit": "espèces",
       "description": "Espèces sauvées",
       "ratePerSecond": 0.000001,
       "icon": "🦋"

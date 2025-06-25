@@ -23,6 +23,7 @@ body {
   color: #333;
   display: flex;
   justify-content: center;
+  overflow-y: hidden;
 }
 
 #root {
@@ -69,6 +70,7 @@ body {
   position: relative;
   width: 100%;
   max-width: 800px;
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,8 +119,9 @@ body {
 
 .circular-stats-display {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
 }
@@ -127,7 +130,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: rotate(calc(var(--angle))) translate(350px)
+  transform: rotate(calc(var(--angle))) translate(300px)
     rotate(calc(-1 * var(--angle)));
   pointer-events: auto;
 }
@@ -180,6 +183,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  margin-top: -100px;
 }
 
 .button-container {
@@ -196,11 +200,14 @@ body {
 }
 
 .switch {
-  background-color: #222;
+  z-index: 1000;
+  background-color: hsl(var(--hue), 10%, 90%);
+  transform: rotate(90deg);
+  margin-top: -230px;
   border-radius: 0.375em;
-  box-shadow: 0 4.375em 2em #111 inset, 0 0.125em 0 #222 inset,
-    0 0 0.375em rgba(0, 0, 0, 0.5);
-  margin: auto;
+  box-shadow: 0 4.375em 2em hsl(var(--hue), 10%, 70%) inset,
+    0 0.125em 0 hsl(var(--hue), 10%, 90%) inset,
+    0 0 0.375em hsla(var(--hue), 10%, 10%, 0.5);
   position: relative;
   transition: background-color var(--trans-dur) var(--trans-timing),
     box-shadow var(--trans-dur) var(--trans-timing);
@@ -209,7 +216,7 @@ body {
 }
 
 .switch.shake {
-  animation: buttonShake 0.5s ease-in-out;
+  animation: switchShake 0.3s ease-in-out;
 }
 
 .switch__input,
@@ -252,9 +259,10 @@ body {
 }
 
 .switch__lever {
-  background-color: #333;
+  background-color: hsla(var(--hue), 10%, 80%);
   border-radius: 0.25em;
-  box-shadow: 0 0 0.25em #000 inset, 0.75em 0 0.5em #222 inset;
+  box-shadow: 0 0 0.25em hsl(var(--hue), 10%, 10%) inset,
+    0.75em 0 0.5em hsl(var(--hue), 10%, 90%) inset;
   margin: 0.375em;
   position: relative;
   transition: background-color var(--trans-dur) var(--trans-timing),
@@ -264,7 +272,10 @@ body {
 }
 
 .switch__lever:before {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
+  background-image: linear-gradient(
+    hsla(var(--hue), 10%, 10%, 0),
+    hsla(var(--hue), 10%, 10%, 0.2)
+  );
   border-radius: inherit;
   content: "";
   display: block;
@@ -285,10 +296,11 @@ body {
 }
 
 .switch__lever-half-top {
-  background-color: #444;
+  background-color: hsl(var(--hue), 10%, 85%);
   border-radius: 0.25em 0.25em 0 0;
   bottom: 50%;
   transform-origin: 50% 100%;
+  transform: rotateX(0deg);
 }
 
 .switch__lever-half-top:before,
@@ -301,13 +313,15 @@ body {
 
 .switch__lever-half-top:before {
   border-radius: 50%;
-  box-shadow: 0 0 0 0.125em #333 inset, 0 0.25em 0 #444 inset, 0 0.125em 0 #444;
+  box-shadow: 0 0 0 0.125em hsl(var(--hue), 10%, 65%) inset,
+    0 0.25em 0 hsl(var(--hue), 10%, 90%) inset,
+    0 0.125em 0 hsl(var(--hue), 10%, 90%);
   width: 1em;
   height: 1em;
 }
 
 .switch__lever-half-bottom {
-  background-color: #444;
+  background-color: hsl(var(--hue), 10%, 90%);
   border-radius: 0 0 0.25em 0.25em;
   align-items: flex-end;
   top: 50%;
@@ -316,64 +330,38 @@ body {
 }
 
 .switch__lever-half-bottom:before {
-  background-color: #333;
-  box-shadow: 0 0.125em 0 #222 inset, 0 -0.0625em 0 #444 inset,
-    0 0 0.5em rgba(0, 255, 0, 0);
+  background-color: hsl(var(--hue2), 10%, 45%);
+  box-shadow: 0 0.125em 0 hsl(var(--hue2), 10%, 30%) inset,
+    0 -0.0625em 0 hsl(var(--hue), 10%, 90%) inset,
+    0 0 0.5em hsla(var(--hue2), 90%, 45%, 0);
   width: 0.25em;
   height: 1.125em;
+  transform: rotate(180deg);
 }
 
-.switch__lever-shadow {
-  border-radius: 0.25em;
-  overflow: hidden;
-  top: 0.5em;
-  right: 0;
-  width: 5em;
-  height: calc(100% - 0.25em);
-}
-
-.switch__lever-shadow:before,
-.switch__lever-shadow:after {
-  background-color: rgba(0, 0, 0, 0.3);
-  content: "";
-  left: 1.625em;
-  width: 3em;
-  height: 50%;
-  transition: background-color var(--trans-dur) var(--trans-timing),
-    transform var(--trans-dur) var(--trans-timing);
-}
-
-.switch__lever-shadow:before {
-  border-radius: 1.5em 0 0 0 / 1em 0 0 0;
-  transform-origin: 0 100%;
-}
-
-.switch__lever-shadow:after {
-  border-radius: 0.25em;
-  bottom: 0;
-  transform: skewX(-10deg);
-  transform-origin: 0 0;
-}
-
-/* État `:checked` */
+/* État `:checked` (switch activé) */
 .switch__input:checked ~ .switch__lever .switch__lever-half-top {
-  background-color: #333;
+  background-color: hsl(var(--hue), 10%, 70%);
   transform: rotateX(35deg);
 }
 
 .switch__input:checked ~ .switch__lever .switch__lever-half-top:before {
-  box-shadow: 0 0 0 0.125em #222 inset, 0 0.25em 0 #333 inset, 0 0.125em 0 #333;
+  box-shadow: 0 0 0 0.125em hsl(var(--hue), 10%, 55%) inset,
+    0 0.25em 0 hsl(var(--hue), 10%, 80%) inset,
+    0 0.125em 0 hsl(var(--hue), 10%, 80%);
 }
 
 .switch__input:checked ~ .switch__lever .switch__lever-half-bottom {
-  background-color: #333;
+  background-color: hsl(var(--hue), 10%, 85%);
   transform: rotateX(0);
 }
 
 .switch__input:checked ~ .switch__lever .switch__lever-half-bottom:before {
-  background-color: #00ff00;
-  box-shadow: 0 0.125em 0 #00cc00 inset, 0 -0.0625em 0 #444 inset,
-    0 0 0.5em rgba(0, 255, 0, 1);
+  background-color: hsl(0, 90%, 45%);
+  box-shadow: 0 0.125em 0 hsl(0, 90%, 30%) inset,
+    0 -0.0625em 0 hsl(var(--hue), 10%, 90%) inset,
+    0 0 0.5em hsla(0, 90%, 45%, 1);
+  transform: rotate(180deg);
 }
 
 .switch__input:checked ~ .switch__lever-shadow:before {
@@ -382,14 +370,6 @@ body {
 
 .switch__input:checked ~ .switch__lever-shadow:after {
   transform: skewX(0) scaleY(0.85);
-}
-
-.button-status {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
 }
 
 .status-indicator {
@@ -489,11 +469,6 @@ body {
   color: #aaa;
   font-size: 0.9rem;
   font-style: italic;
-}
-
-.share-section {
-  width: 100%;
-  max-width: 600px;
 }
 
 .share-container {
@@ -727,23 +702,18 @@ body {
   text-decoration: underline;
 }
 
-@keyframes buttonShake {
+@keyframes switchShake {
   0%,
   100% {
-    transform: translateX(0);
-  }
-  10%,
-  30%,
-  50%,
-  70%,
-  90% {
-    transform: translateX(-2px);
+    transform: rotate(90deg) translateX(0);
   }
   20%,
+  60% {
+    transform: rotate(90deg) translateX(-1px);
+  }
   40%,
-  60%,
   80% {
-    transform: translateX(2px);
+    transform: rotate(90deg) translateX(1px);
   }
 }
 
@@ -822,7 +792,7 @@ body {
   }
 
   .circular-stat-position {
-    transform: rotate(calc(var(--angle))) translate(250px)
+    transform: rotate(calc(var(--angle))) translate(220px)
       rotate(calc(-1 * var(--angle)));
   }
 
@@ -886,7 +856,7 @@ body {
   }
 
   .circular-stat-position {
-    transform: rotate(calc(var(--angle))) translate(170px)
+    transform: rotate(calc(var(--angle))) translate(150px)
       rotate(calc(-1 * var(--angle)));
   }
 

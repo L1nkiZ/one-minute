@@ -3,7 +3,6 @@ import "./App.css";
 import InfoPopup from "./components/InfoPopup";
 import Planet3D from "./components/Planet3D";
 import PowerSwitch from "./components/RedButton";
-import ShareButton from "./components/ShareButton";
 import StatsDisplay from "./components/StatsDisplay";
 
 function App() {
@@ -83,15 +82,6 @@ function App() {
         <div className="interaction-section">
           <PowerSwitch onClick={handleShutdownPlanet} isShutdown={isShutdown} />
         </div>
-
-        {isShutdown && (
-          <div className="share-section">
-            <ShareButton
-              elapsedSeconds={elapsedSeconds}
-              isShutdown={isShutdown}
-            />
-          </div>
-        )}
       </main>
 
       <InfoPopup
