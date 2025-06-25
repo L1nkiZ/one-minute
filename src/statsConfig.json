@@ -5,96 +5,156 @@
       "name": "Émissions de CO₂",
       "unit": "kg",
       "description": "Émissions évitées",
-      "ratePerSecond": 1237,
-      "icon": "🌫️"
+      "ratePerSecond": 1079000,
+      "source": "https://science.nasa.gov/science-research/earth-science/climate-science/how-much-carbon-dioxide-are-we-emitting/",
+      "icon": "🌫️",
+      "sourceTitle": "Émissions mondiales de CO₂",
+      "sourceOrganization": "IPCC (Groupe d'experts intergouvernemental sur l'évolution du climat)",
+      "sourceLink": "https://www.ipcc.ch/",
+      "details": "Les émissions mondiales de CO₂ atteignent environ 39 milliards de tonnes par an, soit environ 1 237 kg par seconde."
     },
     {
       "id": "water_consumption",
       "name": "Eau potable",
       "unit": "L",
       "description": "Eau économisée",
-      "ratePerSecond": 28500,
-      "icon": "💧"
+      "ratePerSecond": 136587,
+      "source": "https://www.prbplus.com/water-consumption-statistics/",
+      "icon": "💧",
+      "sourceTitle": "Consommation mondiale d'eau potable",
+      "sourceOrganization": "UNESCO - Rapport mondial sur la mise en valeur des ressources en eau",
+      "sourceLink": "https://www.unesco.org/",
+      "details": "L'humanité consomme environ 900 milliards de mètres cubes d'eau par an pour tous usages."
     },
     {
       "id": "energy_consumption",
       "name": "Énergie",
       "unit": "kWh",
       "description": "Électricité économisée",
-      "ratePerSecond": 10000,
-      "icon": "⚡"
+      "ratePerSecond": 3332000,
+      "source": "https://en.wikipedia.org/wiki/List_of_countries_by_electricity_consumption",
+      "icon": "⚡",
+      "sourceTitle": "Consommation énergétique mondiale",
+      "sourceOrganization": "Agence internationale de l'énergie (AIE)",
+      "sourceLink": "https://www.iea.org/",
+      "details": "La consommation mondiale d'énergie est d'environ 315 000 TWh par an."
     },
     {
       "id": "solid_waste",
       "name": "Déchets solides",
       "unit": "kg",
       "description": "Déchets évités",
-      "ratePerSecond": 350,
-      "icon": "🗑️"
+      "ratePerSecond": 71130,
+      "source": "https://datatopics.worldbank.org/what-a-waste/trends_in_solid_waste_management.html",
+      "icon": "🗑️",
+      "sourceTitle": "Production de déchets solides",
+      "sourceOrganization": "Banque mondiale - What a Waste 2.0",
+      "sourceLink": "https://www.worldbank.org/",
+      "details": "Le monde produit plus de 11 milliards de tonnes de déchets solides par an."
     },
     {
       "id": "deforestation",
       "name": "Arbres abattus",
       "unit": "arbres",
       "description": "Déforestation stoppée",
-      "ratePerSecond": 0.2,
-      "icon": "🌳"
+      "ratePerSecond": 400,
+      "source": "https://tree-nation.com/projects/inside-tree-nation/article/how-many-trees-are-cut-down-each-year",
+      "icon": "🌳",
+      "sourceTitle": "Déforestation mondiale",
+      "sourceOrganization": "FAO - Organisation des Nations Unies pour l'alimentation et l'agriculture",
+      "sourceLink": "https://www.fao.org/",
+      "details": "Environ 6,6 millions d'arbres sont abattus chaque année dans le monde."
     },
     {
       "id": "emails_sent",
       "name": "Emails envoyés",
       "unit": "emails",
       "description": "Pollution numérique évitée",
-      "ratePerSecond": 3000,
-      "icon": "📧"
+      "ratePerSecond": 4028000,
+      "source": "https://porchgroupmedia.com/blog/email-marketing-statistics/",
+      "icon": "📧",
+      "sourceTitle": "Emails envoyés",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://porchgroupmedia.com/blog/email-marketing-statistics/",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "video_streaming",
       "name": "Vidéos streamées",
       "unit": "h",
       "description": "Streaming évité",
-      "ratePerSecond": 400,
-      "icon": "📺"
+      "ratePerSecond": 270,
+      "source": "https://www.demandsage.com/live-streaming-statistics/",
+      "icon": "📺",
+      "sourceTitle": "Vidéos streamées",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://www.demandsage.com/live-streaming-statistics/",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "plastic_production",
       "name": "Plastique produit",
       "unit": "kg",
       "description": "Plastique non produit",
-      "ratePerSecond": 8,
-      "icon": "♻️"
+      "ratePerSecond": 12386,
+      "source": "https://ourworldindata.org/plastic-pollution",
+      "icon": "♻️",
+      "sourceTitle": "Plastique produit",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://ourworldindata.org/plastic-pollution",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "methane_emissions",
       "name": "Méthane émis",
       "unit": "kg CH₄",
       "description": "Méthane évité",
-      "ratePerSecond": 20,
-      "icon": "🐄"
+      "ratePerSecond": 168,
+      "source": "https://ourworldindata.org/co2-and-greenhouse-gas-emissions",
+      "icon": "🐄",
+      "sourceTitle": "Méthane émis",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://ourworldindata.org/co2-and-greenhouse-gas-emissions",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "food_waste",
       "name": "Gaspillage alimentaire",
       "unit": "kg",
       "description": "Nourriture sauvée",
-      "ratePerSecond": 110,
-      "icon": "🍎"
+      "ratePerSecond": 71058,
+      "source": "https://www.unep.org/resources/global-waste-management-outlook-2024",
+      "icon": "🍎",
+      "sourceTitle": "Gaspillage alimentaire",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://www.unep.org/resources/global-waste-management-outlook-2024",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "oil_consumption",
       "name": "Pétrole consommé",
       "unit": "barils",
       "description": "Énergie fossile économisée",
-      "ratePerSecond": 4,
-      "icon": "🛢️"
+      "ratePerSecond": 21.6,
+      "source": "https://time.com/strait-of-hormuz-function/",
+      "icon": "🛢️",
+      "sourceTitle": "Pétrole consommé",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://time.com/strait-of-hormuz-function/",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     },
     {
       "id": "biodiversity_loss",
       "name": "Biodiversité disparue",
       "unit": "espèces",
       "description": "Espèces sauvées",
-      "ratePerSecond": 0.000001,
-      "icon": "🦋"
+      "ratePerSecond": 0.000016,
+      "source": "https://www.timenews.com/science/sixth-great-extinction-biodiversity-loss/",
+      "icon": "🦋",
+      "sourceTitle": "Biodiversité disparue",
+      "sourceOrganization": "Données basées sur diverses sources scientifiques",
+      "sourceLink": "https://www.timenews.com/science/sixth-great-extinction-biodiversity-loss/",
+      "details": "Estimation basée sur des moyennes mondiales annuelles converties en valeurs par seconde."
     }
   ]
 }
