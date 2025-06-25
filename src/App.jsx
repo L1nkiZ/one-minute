@@ -46,33 +46,42 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className={`app-title ${isShutdown ? "shutdown" : ""}`}>
-          {isShutdown
-            ? "🌍 Planète en Mode Économie"
-            : "🌍 Impact Écologique Mondial"}
-        </h1>
         {!isShutdown && (
           <p className="app-subtitle">
             Découvrez l'impact de nos consommations sur la planète en temps réel
           </p>
         )}
+        {isShutdown && (
+          <div className="timer-container">
+            <div className="timer">
+              {Math.floor(elapsedSeconds / 3600)}h{" "}
+              {Math.floor((elapsedSeconds % 3600) / 60)}m{" "}
+              {Math.floor(elapsedSeconds % 60)}s
+            </div>
+          </div>
+        )}
       </header>
 
       <main className="app-main">
-        <div className="planet-section">
-          <Planet3D isShutdown={isShutdown} />
+        <div className="planet-container-wrapper">
+          <div className="planet-section">
+            <Planet3D isShutdown={isShutdown} />
+          </div>
+
+          {isShutdown && (
+            <div className="circular-stats">
+              <StatsDisplay
+                isShutdown={isShutdown}
+                elapsedSeconds={elapsedSeconds}
+                onStatClick={handleStatClick}
+                circular={true}
+              />
+            </div>
+          )}
         </div>
 
         <div className="interaction-section">
           <RedButton onClick={handleShutdownPlanet} isShutdown={isShutdown} />
-        </div>
-
-        <div className="stats-section">
-          <StatsDisplay
-            isShutdown={isShutdown}
-            elapsedSeconds={elapsedSeconds}
-            onStatClick={handleStatClick}
-          />
         </div>
 
         {isShutdown && (

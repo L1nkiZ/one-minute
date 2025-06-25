@@ -19,7 +19,7 @@ function formatNumber(value, decimals = 0) {
   return value.toFixed(decimals);
 }
 
-function StatItem({ stat, elapsedSeconds, index, onStatClick }) {
+function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
   const [displayValue, setDisplayValue] = useState(0);
   const [isIncrementing, setIsIncrementing] = useState(false);
 
@@ -47,6 +47,21 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick }) {
     return () => clearInterval(interval);
   }, [currentValue, isIncrementing]);
 
+  if (circular) {
+    return (
+      <div
+        className={`circular-stat-item ${isIncrementing ? "incrementing" : ""}`}
+        onClick={() => onStatClick && onStatClick(stat)}
+      >
+        <div className="stat-icon">{stat.icon}</div>
+        <div className="stat-value">
+          {formatNumber(displayValue, stat.ratePerSecond < 1 ? 6 : 0)}{" "}
+          {stat.unit}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       className={`stat-item ${isIncrementing ? "incrementing" : ""}`}
@@ -70,8 +85,38 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick }) {
   );
 }
 
-function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick }) {
+function StatsDisplay({ isShutdown, elapsedSeconds, onStatClick, circular }) {
   if (!isShutdown) return null;
+
+  if (circular) {
+    const totalStats = statsConfig.stats.length;
+    const angleStep = (2 * Math.PI) / totalStats;
+
+    return (
+      <div className="circular-stats-display">
+        {statsConfig.stats.map((stat, index) => {
+          const angle = index * angleStep;
+          const style = {
+            "--angle": `${angle}rad`,
+            "--index": index,
+            "--total": totalStats,
+          };
+
+          return (
+            <div className="circular-stat-position" style={style} key={stat.id}>
+              <StatItem
+                stat={stat}
+                elapsedSeconds={elapsedSeconds}
+                index={index}
+                onStatClick={onStatClick}
+                circular={true}
+              />
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div className="stats-display">

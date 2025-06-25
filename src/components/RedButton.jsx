@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function RedButton({ onClick, isShutdown }) {
+function PowerSwitch({ onClick, isShutdown }) {
   const [isShaking, setIsShaking] = useState(false);
 
-  const handleClick = () => {
+  const handleChange = () => {
     if (!isShutdown) {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
@@ -11,17 +11,34 @@ function RedButton({ onClick, isShutdown }) {
     }
   };
 
+  // Assurer que l'état du checkbox correspond à l'état isShutdown
+  useEffect(() => {
+    const checkbox = document.querySelector(".switch__input");
+    if (checkbox) {
+      checkbox.checked = isShutdown;
+    }
+  }, [isShutdown]);
+
   return (
     <div className="button-container">
-      <button
-        className={`red-button ${isShaking ? "shake" : ""} ${
-          isShutdown ? "shutdown" : ""
-        }`}
-        onClick={handleClick}
-        disabled={isShutdown}
-      >
-        {isShutdown ? "🌍 PLANÈTE ÉTEINTE" : "🔴 ÉTEINDRE LA PLANÈTE"}
-      </button>
+      <label className={`switch ${isShaking ? "shake" : ""}`}>
+        <input
+          className="switch__input"
+          type="checkbox"
+          role="switch"
+          name="power"
+          checked={isShutdown}
+          onChange={handleChange}
+          disabled={isShutdown}
+        />
+        <span className="switch__lever-shadow"></span>
+        <span className="switch__lever">
+          <span className="switch__lever-sides"></span>
+          <span className="switch__lever-half-top"></span>
+          <span className="switch__lever-half-bottom"></span>
+        </span>
+        <span className="switch__label">Power</span>
+      </label>
       {isShutdown && (
         <div className="button-status">
           <span className="status-indicator">●</span>
@@ -32,4 +49,4 @@ function RedButton({ onClick, isShutdown }) {
   );
 }
 
-export default RedButton;
+export default PowerSwitch;
