@@ -15,7 +15,7 @@ function App() {
   const intervalRef = useRef(null);
   const startTimeRef = useRef(null);
 
-  const MAX_DURATION = 10; // 1 minute en secondes
+  const MAX_DURATION = 60; // 1 minute en secondes
 
   const handleShutdownPlanet = () => {
     setIsShutdown(true);
