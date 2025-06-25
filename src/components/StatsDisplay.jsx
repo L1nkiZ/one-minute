@@ -53,7 +53,10 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
         className={`circular-stat-item ${isIncrementing ? "incrementing" : ""}`}
         onClick={() => onStatClick && onStatClick(stat)}
       >
-        <div className="stat-icon">{stat.icon}</div>
+        <div className="stat-icon-container">
+          <div className="stat-icon">{stat.icon}</div>
+          <div className="stat-underline"></div>
+        </div>
         <div className="stat-value">
           {formatNumber(displayValue, stat.ratePerSecond < 1 ? 6 : 0)}{" "}
           {stat.unit}
@@ -72,7 +75,10 @@ function StatItem({ stat, elapsedSeconds, index, onStatClick, circular }) {
       }}
       onClick={() => onStatClick && onStatClick(stat)}
     >
-      <div className="stat-icon">{stat.icon}</div>
+      <div className="stat-icon-container">
+        <div className="stat-icon">{stat.icon}</div>
+        <div className="stat-underline"></div>
+      </div>
       <div className="stat-content">
         <div className="stat-value">
           {formatNumber(displayValue, stat.ratePerSecond < 1 ? 6 : 0)}{" "}
