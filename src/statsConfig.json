@@ -1,0 +1,100 @@
+{
+  "stats": [
+    {
+      "id": "co2_emissions",
+      "name": "Émissions de CO₂",
+      "unit": "kg/s",
+      "description": "Émissions évitées",
+      "ratePerSecond": 1237,
+      "icon": "🌫️"
+    },
+    {
+      "id": "water_consumption",
+      "name": "Eau potable",
+      "unit": "L/s",
+      "description": "Eau économisée",
+      "ratePerSecond": 28500,
+      "icon": "💧"
+    },
+    {
+      "id": "energy_consumption",
+      "name": "Énergie",
+      "unit": "kWh/s",
+      "description": "Électricité économisée",
+      "ratePerSecond": 10000,
+      "icon": "⚡"
+    },
+    {
+      "id": "solid_waste",
+      "name": "Déchets solides",
+      "unit": "kg/s",
+      "description": "Déchets évités",
+      "ratePerSecond": 350,
+      "icon": "🗑️"
+    },
+    {
+      "id": "deforestation",
+      "name": "Arbres abattus",
+      "unit": "arbres/s",
+      "description": "Déforestation stoppée",
+      "ratePerSecond": 0.2,
+      "icon": "🌳"
+    },
+    {
+      "id": "emails_sent",
+      "name": "Emails envoyés",
+      "unit": "emails/s",
+      "description": "Pollution numérique évitée",
+      "ratePerSecond": 3000,
+      "icon": "📧"
+    },
+    {
+      "id": "video_streaming",
+      "name": "Vidéos streamées",
+      "unit": "h/s",
+      "description": "Streaming évité",
+      "ratePerSecond": 400,
+      "icon": "📺"
+    },
+    {
+      "id": "plastic_production",
+      "name": "Plastique produit",
+      "unit": "kg/s",
+      "description": "Plastique non produit",
+      "ratePerSecond": 8,
+      "icon": "♻️"
+    },
+    {
+      "id": "methane_emissions",
+      "name": "Méthane émis",
+      "unit": "kg CH₄/s",
+      "description": "Méthane évité",
+      "ratePerSecond": 20,
+      "icon": "🐄"
+    },
+    {
+      "id": "food_waste",
+      "name": "Gaspillage alimentaire",
+      "unit": "kg/s",
+      "description": "Nourriture sauvée",
+      "ratePerSecond": 110,
+      "icon": "🍎"
+    },
+    {
+      "id": "oil_consumption",
+      "name": "Pétrole consommé",
+      "unit": "barils/s",
+      "description": "Énergie fossile économisée",
+      "ratePerSecond": 4,
+      "icon": "🛢️"
+    },
+    {
+      "id": "biodiversity_loss",
+      "name": "Biodiversité disparue",
+      "unit": "espèces/s",
+      "description": "Espèces sauvées",
+      "ratePerSecond": 0.000001,
+      "icon": "🦋"
+    }
+  ]
+}
